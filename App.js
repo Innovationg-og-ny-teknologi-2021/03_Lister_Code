@@ -1,12 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
+import ArrayListScreen from './screens/ArrayListScreen';
+import FetchListScreen from './screens/FetchListScreen';
+import FlatListScreen from './screens/FlatListScreen';
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Flat List" component={FlatListScreen} />
+        <Tab.Screen name="Array List" component={ArrayListScreen} />
+        <Tab.Screen name="Fetch List" component={FetchListScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
